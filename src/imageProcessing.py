@@ -1,3 +1,21 @@
+# StyleNET
+# Copyright (C) 2019 John Gouwar
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# imageProcessing.py - Functions to prepare input images and write output images
+
 import os
 import cv2
 import numpy as np
@@ -104,7 +122,7 @@ def write_outputs(final_output, checkpoint_outputs, output_dir, output_name,
         cv2.imwrite(checkpoint_image_name, checkpoint_image)
 
     final_image = make_img(final_output)
-    final_output_name = os.path.join(output_dir, output_name + "." + 
+    final_output_name = os.path.join(output_dir, output_name + "." +
                                      output_extension)
     cv2.imwrite(final_output_name, final_image)
 
