@@ -21,10 +21,10 @@ If you are using TensorFlow GPU, it can be helpful to set the environment variab
 ### Command Line Flags
 
 #### style_image_dir
-A path to the directory where style images are located. **Default: "./data/styleImages"**
+A path to the directory where style images are located. **Default: "../data/styleImages"**
 
 #### content_image_dir
-A path to the directory where content images are located. **Default: "./data/contentImages"**
+A path to the directory where content images are located. **Default: "../data/contentImages"**
 
 #### style_image_name
 The name of the style image file. **Default: "style_image.jpg"**
@@ -54,7 +54,7 @@ A comma separated string (with no spaces) of the layers used for content represe
 The factor by which the content image is scaled. **Default: 1.0**
 
 #### output_dir
-A path to the directory where the output images are written. **Default: ""./outputs"**
+A path to the directory where the output images are written. **Default: ""../outputs"**
 
 #### output_name
 The base name of the output images. **Default: "output"**
@@ -62,6 +62,8 @@ The base name of the output images. **Default: "output"**
 #### output_extension
 The file extension for the output images (with no "."). **Default: png**
 
+#### print_final_shape
+Boolean flag whether to print final output shape before transfer steps are made. **Default: False**
+
 ## Acknowledgments
 All credit for the algorithm goes to Gaty's et al.
- 
