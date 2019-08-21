@@ -12,9 +12,9 @@ tf.compat.v1.enable_resource_variables()
 tf.compat.v1.enable_eager_execution()
 
 ###############################################################################
-tf.app.flags.DEFINE_string("style_image_dir", "./data/styleImages",
+tf.app.flags.DEFINE_string("style_image_dir", "../data/styleImages",
                            """Directory where style images are located""")
-tf.app.flags.DEFINE_string("content_image_dir", "./data/contentImages",
+tf.app.flags.DEFINE_string("content_image_dir", "../data/contentImages",
                             """Directory where content images are located""")
 tf.app.flags.DEFINE_string("style_image_name", "style_image.jpg",
                             """Name of the style image file""")
@@ -35,12 +35,14 @@ tf.app.flags.DEFINE_string("content_layers", "block4_conv2",
                             """Comma separated string of content layer names""")
 tf.app.flags.DEFINE_float("content_resize_factor", 1.0,
                           """Ratio content image is scaled by""")
-tf.app.flags.DEFINE_string("output_dir", "./outputs",
+tf.app.flags.DEFINE_string("output_dir", "../outputs",
                             """Directory where outputs are written.""")
 tf.app.flags.DEFINE_string("output_name", "output",
                             """Base name of output images""" )
 tf.app.flags.DEFINE_string("output_extension", "png",
                             """File extension of output images""")
+tf.app.flags.DEFINE_boolean("print_final_shape", False,
+                            """Flag to print final output shape""")
 FLAGS = tf.app.flags.FLAGS
 ###############################################################################
 
@@ -267,6 +269,10 @@ def main(argv=None):
     # Get images into NHWC, 0.0-1.0, format
     images = imageProcessing.process_inputs(full_style_path, full_content_path,
                                             FLAGS.content_resize_factor)
+
+    # Print final shape if necessary
+    if FLAGS.print_final_shape:
+        print("Final image shape: {}".format(images['content'].shape))
 
     # Get a list of layer names
     style_layers = FLAGS.style_layers.split(",")
